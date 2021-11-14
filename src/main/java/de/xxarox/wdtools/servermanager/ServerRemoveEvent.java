@@ -1,8 +1,8 @@
 package de.xxarox.wdtools.servermanager;
 
-import dev.waterdog.command.CommandSender;
-import dev.waterdog.event.CancellableEvent;
-import dev.waterdog.network.ServerInfo;
+import dev.waterdog.waterdogpe.command.CommandSender;
+import dev.waterdog.waterdogpe.event.CancellableEvent;
+import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
 
 public class ServerRemoveEvent extends ServerEvent implements CancellableEvent {
     private CommandSender sender;

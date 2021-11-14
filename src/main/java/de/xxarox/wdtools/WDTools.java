@@ -4,7 +4,7 @@ import de.xxarox.wdtools.command.SendMessageCommand;
 import de.xxarox.wdtools.command.ServerManagerCommand;
 import de.xxarox.wdtools.command.TransferPlayerCommand;
 import de.xxarox.wdtools.handler.JoinLobbyHandler;
-import dev.waterdog.plugin.Plugin;
+import dev.waterdog.waterdogpe.plugin.Plugin;
 
 public class WDTools extends Plugin {
     private static WDTools INSTANCE = null;

@@ -1,6 +1,6 @@
 package de.xxarox.wdtools.manager;
 
-import dev.waterdog.network.ServerInfo;
+import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
 
 import java.util.Collection;
 import java.util.HashSet;

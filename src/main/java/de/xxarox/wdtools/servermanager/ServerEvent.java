@@ -1,7 +1,8 @@
 package de.xxarox.wdtools.servermanager;
 
-import dev.waterdog.event.Event;
-import dev.waterdog.network.ServerInfo;
+
+import dev.waterdog.waterdogpe.event.Event;
+import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
 
 public abstract class ServerEvent extends Event {
     private ServerInfo serverModified;

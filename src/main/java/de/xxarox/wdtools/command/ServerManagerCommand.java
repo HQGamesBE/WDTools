@@ -5,11 +5,12 @@ import de.xxarox.wdtools.manager.LobbyManager;
 import de.xxarox.wdtools.manager.ServerManager;
 import de.xxarox.wdtools.servermanager.ServerAddEvent;
 import de.xxarox.wdtools.servermanager.ServerRemoveEvent;
-import dev.waterdog.ProxyServer;
-import dev.waterdog.command.Command;
-import dev.waterdog.command.CommandSender;
-import dev.waterdog.command.CommandSettings;
-import dev.waterdog.network.ServerInfo;
+import dev.waterdog.waterdogpe.ProxyServer;
+import dev.waterdog.waterdogpe.command.Command;
+import dev.waterdog.waterdogpe.command.CommandSender;
+import dev.waterdog.waterdogpe.command.CommandSettings;
+import dev.waterdog.waterdogpe.network.serverinfo.BedrockServerInfo;
+import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
 
 import java.net.InetSocketAddress;
 
@@ -101,7 +102,7 @@ public class ServerManagerCommand extends Command {
                         sender.sendMessage(WDTools.getPrefix() + "Invalid ip address §a" + args[2] + "§7. Here's an example: §a127.0.0.1:12345");
                         return false;
                     }
-                    ServerInfo info = new ServerInfo(args[1], address, address);
+                    ServerInfo info = new BedrockServerInfo(args[1], address, address);
                     ServerAddEvent addEvent = new ServerAddEvent(info, sender);
                     ProxyServer.getInstance().getEventManager().callEvent(addEvent);
 

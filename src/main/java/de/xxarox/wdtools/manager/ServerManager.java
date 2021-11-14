@@ -1,8 +1,8 @@
 package de.xxarox.wdtools.manager;
 
-import dev.waterdog.ProxyServer;
-import dev.waterdog.network.ServerInfo;
-import dev.waterdog.player.ProxiedPlayer;
+import dev.waterdog.waterdogpe.ProxyServer;
+import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
+import dev.waterdog.waterdogpe.player.ProxiedPlayer;
 
 import java.util.Collection;
 
@@ -29,7 +29,7 @@ public class ServerManager {
         ServerInfo info = getServerInfo(name);
 
         for (ProxiedPlayer p : info.getPlayers()) {
-            p.sendToFallback(p.getServer().getInfo(), "Server was stopped");
+            p.sendToFallback(p.getServerInfo(), "Server was stopped");
         }
         ProxyServer.getInstance().removeServerInfo(name);
     }
