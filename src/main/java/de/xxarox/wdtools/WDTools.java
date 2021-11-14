@@ -13,7 +13,10 @@ public class WDTools extends Plugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
+
+        this.saveResource("config.yml", false);
         PREFIX = getConfig().getString("prefix", "§dWDTools §8» §r");
+
 
         // Handlers
         this.getProxy().setJoinHandler(new JoinLobbyHandler());
