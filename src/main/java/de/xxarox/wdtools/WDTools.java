@@ -4,6 +4,7 @@ import de.xxarox.wdtools.command.SendMessageCommand;
 import de.xxarox.wdtools.command.ServerManagerCommand;
 import de.xxarox.wdtools.command.TransferPlayerCommand;
 import de.xxarox.wdtools.handler.JoinLobbyHandler;
+import de.xxarox.wdtools.handler.ReconnectLobbyHandler;
 import dev.waterdog.waterdogpe.plugin.Plugin;
 
 public class WDTools extends Plugin {
@@ -20,6 +21,7 @@ public class WDTools extends Plugin {
 
         // Handlers
         this.getProxy().setJoinHandler(new JoinLobbyHandler());
+        this.getProxy().setReconnectHandler(new ReconnectLobbyHandler());
 
         // Commands
         getProxy().getCommandMap().registerCommand("servermanager", new ServerManagerCommand());
