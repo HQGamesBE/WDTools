@@ -1,8 +1,6 @@
 package de.xxarox.wdtools;
 
-import de.xxarox.wdtools.command.SendMessageCommand;
-import de.xxarox.wdtools.command.ServerManagerCommand;
-import de.xxarox.wdtools.command.TransferPlayerCommand;
+import de.xxarox.wdtools.command.*;
 import de.xxarox.wdtools.handler.JoinLobbyHandler;
 import de.xxarox.wdtools.handler.ReconnectLobbyHandler;
 import dev.waterdog.waterdogpe.plugin.Plugin;
@@ -24,9 +22,11 @@ public class WDTools extends Plugin {
         this.getProxy().setReconnectHandler(new ReconnectLobbyHandler());
 
         // Commands
-        getProxy().getCommandMap().registerCommand("servermanager", new ServerManagerCommand());
-        getProxy().getCommandMap().registerCommand("sendmessage", new SendMessageCommand("sendmessage"));
-        getProxy().getCommandMap().registerCommand("transfer", new TransferPlayerCommand("transfer"));
+        getProxy().getCommandMap().registerCommand(new ServerManagerCommand());
+        getProxy().getCommandMap().registerCommand(new SendMessageCommand("sendmessage"));
+        getProxy().getCommandMap().registerCommand(new TransferPlayerCommand("transfer"));
+        getProxy().getCommandMap().registerCommand(new HubCommand("hub"));
+        getProxy().getCommandMap().registerCommand(new LobbyCommand("lobby"));
 
         getLogger().info("WDTools enabled");
     }
