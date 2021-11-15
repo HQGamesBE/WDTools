@@ -12,7 +12,7 @@ public class SendMessageCommand extends Command {
     public SendMessageCommand(String name) {
         super(name,
                 CommandSettings.builder()
-                        .setUsageMessage("/sendmessage")
+                        .setUsageMessage("/sendmessage <player> <message>")
                         .setDescription("Send messages via Proxy")
                         .setPermission("xxarox.wdtools.message")
                         .build());
@@ -21,7 +21,6 @@ public class SendMessageCommand extends Command {
     @Override
     public boolean onExecute(CommandSender commandSender, String s, String[] strings) {
         if (strings.length < 2) {
-            commandSender.sendMessage("Missing arguments!");
             return false;
         }
         if (strings[0].equals("*")) {
@@ -34,13 +33,13 @@ public class SendMessageCommand extends Command {
                     }
                 }
                 p.sendMessage(jibbit.toString());
-                return false;
+                return true;
             }
         }
         ProxiedPlayer player = ProxyServer.getInstance().getPlayer(strings[0]);
         if (player == null) {
             commandSender.sendMessage("Player not found!");
-            return false;
+            return true;
         }
         StringJoiner jibbit = new StringJoiner(" ");
 
@@ -50,6 +49,6 @@ public class SendMessageCommand extends Command {
             }
         }
         player.sendMessage(jibbit.toString());
-        return false;
+        return true;
     }
 }
