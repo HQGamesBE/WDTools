@@ -27,6 +27,7 @@ public class WDTools extends Plugin {
         getProxy().getCommandMap().registerCommand(new TransferPlayerCommand("transfer"));
         getProxy().getCommandMap().registerCommand(new HubCommand("hub"));
         getProxy().getCommandMap().registerCommand(new LobbyCommand("lobby"));
+        getProxy().getCommandMap().registerCommand(new WhitelistCommand("wdwhitelist"));
 
         getLogger().info("WDTools enabled");
     }
