@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 public class WhitelistManager {
     public static boolean enabled;
     public static List<String> list;
-    public static Configuration whitelistConfig = new YamlConfig(new File(ProxyServer.getInstance().getDataPath().toString() + "whitelist.yml"));
+    public static Configuration whitelistConfig = new YamlConfig(new File(ProxyServer.getInstance().getDataPath().toString() + "/whitelist.yml"));
 
     static{
         boolean saveConfig = false;
@@ -45,14 +45,14 @@ public class WhitelistManager {
         if (!list.contains(playerName.toLowerCase())) {
             list.add(playerName.toLowerCase());
         }
-        whitelistConfig.setList("whitelist", list);
+        whitelistConfig.setStringList("players", list);
         whitelistConfig.save();
     }
 
     public static void remove(String playerName){
         if (list.contains(playerName.toLowerCase())) {
             list.remove(playerName.toLowerCase());
-            whitelistConfig.setList("whitelist", list);
+            whitelistConfig.setStringList("players", list);
             whitelistConfig.save();
         }
     }

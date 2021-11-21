@@ -24,7 +24,7 @@ public class KickCommand extends Command {
         if (commandSender.isPlayer()) {
             return true;
         }
-        if (strings.length > 2 && strings[0].toLowerCase().equals("*")) {
+        if (strings.length >= 2 && strings[0].toLowerCase().equals("*")) {
             for (Map.Entry<UUID, ProxiedPlayer> entry: ProxyServer.getInstance().getPlayers().entrySet()) {
                 StringJoiner stringJoiner = new StringJoiner(" ");
                 for (String string : strings) {
@@ -35,7 +35,7 @@ public class KickCommand extends Command {
                 entry.getValue().disconnect(stringJoiner.toString());
             }
             return true;
-        } else if (strings.length > 2) {
+        } else if (strings.length >= 2) {
             StringJoiner stringJoiner = new StringJoiner(" ");
             for (String string : strings) {
                 if (!strings[0].equals(string)) {
