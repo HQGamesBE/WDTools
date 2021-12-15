@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="WDTools">
+    <output-path>$PROJECT_DIR$/out/artifacts/WDTools</output-path>
+    <root id="archive" name="WDTools.jar">
+      <element id="module-output" name="WDTools" />
+    </root>
+  </artifact>
+</component>

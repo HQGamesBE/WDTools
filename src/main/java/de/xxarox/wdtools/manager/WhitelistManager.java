@@ -10,14 +10,19 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class WhitelistManager {
-    public static boolean enabled;
-    public static List<String> list;
-    public static Configuration whitelistConfig = new YamlConfig(new File(ProxyServer.getInstance().getDataPath().toString() + "/whitelist.yml"));
+    private static final Configuration whitelistConfig = new YamlConfig(new File(ProxyServer.getInstance().getDataPath().toString() + "/whitelist.yml"));
+    private static boolean enabled;
+    private static String kickMessage;
+    private static List<String> list;
 
     static{
         boolean saveConfig = false;
         if (!whitelistConfig.exists("enabled")) {
             whitelistConfig.setBoolean("enabled", true);
+            saveConfig = true;
+        }
+        if (!whitelistConfig.exists("kick-message")) {
+            whitelistConfig.setString("kick-message", "§cServer is under §4maintenance\n§fMore information join our Discord: §9discord.gg/nVayp7KDNZ");
             saveConfig = true;
         }
         if (!whitelistConfig.exists("players")) {
@@ -28,6 +33,7 @@ public class WhitelistManager {
             whitelistConfig.save();
         }
         enabled = whitelistConfig.getBoolean("enabled", true);
+        kickMessage = whitelistConfig.getString("kick-message", "Server is whitelisted");
         list = whitelistConfig.getStringList("players", new ArrayList<>());
     }
 
@@ -39,6 +45,10 @@ public class WhitelistManager {
 
     public static boolean isEnabled() {
         return enabled;
+    }
+
+    public static String getKickMessage() {
+        return kickMessage;
     }
 
     public static void add(String playerName){
