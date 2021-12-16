@@ -18,13 +18,13 @@ public class WhitelistCommand extends Command {
     @Override
     public boolean onExecute(CommandSender commandSender, String s, String[] strings) {
         if (
-                strings.length == 1 && strings[0].toLowerCase().equals("list")
+                strings.length == 1 && strings[0].equalsIgnoreCase("list")
                 && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.list"))
         ) {
             commandSender.sendMessage("Whitelist: " + WhitelistManager.getAll());
             return true;
         } else if (
-                strings.length == 1 && strings[0].toLowerCase().equals("on")
+                strings.length == 1 && strings[0].equalsIgnoreCase("on")
                 && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.enable"))
         ) {
             if (!WhitelistManager.isEnabled()) {
@@ -35,7 +35,7 @@ public class WhitelistCommand extends Command {
             }
             return true;
         } else if (
-                strings.length == 1 && strings[0].toLowerCase().equals("off")
+                strings.length == 1 && strings[0].equalsIgnoreCase("off")
                 && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.enable"))
         ) {
             if (WhitelistManager.isEnabled()) {
@@ -46,7 +46,7 @@ public class WhitelistCommand extends Command {
             }
             return true;
         } else if (
-                strings.length == 2 && strings[0].toLowerCase().equals("add")
+                strings.length == 2 && strings[0].equalsIgnoreCase("add")
                 && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.manage"))
         ) {
             if (!WhitelistManager.isWhitelisted(strings[1])) {
@@ -57,7 +57,7 @@ public class WhitelistCommand extends Command {
             }
             return true;
         } else if (
-                strings.length == 2 && strings[0].toLowerCase().equals("remove")
+                strings.length == 2 && strings[0].equalsIgnoreCase("remove")
                 && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.manage"))
         ) {
             if (WhitelistManager.isWhitelisted(strings[1])) {

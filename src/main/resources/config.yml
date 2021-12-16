@@ -1,1 +1,4 @@
 prefix: "§dWDTools §8» §r"
+messages:
+  vpn-detected: "§4You have a VPN active, please disable it!"
+  conetion-limit-reached: "§9Too many clients are connected, please try again later!"

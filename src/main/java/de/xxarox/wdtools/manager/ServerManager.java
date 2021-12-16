@@ -37,4 +37,12 @@ public class ServerManager {
     public static Collection<ServerInfo> getServers() {
         return ProxyServer.getInstance().getServers();
     }
+
+    public static ServerInfo getConnector(){
+        return ProxyServer.getInstance().getServerInfo(ProxyServer.getInstance().getConfiguration().getPriorities().get(0));
+    }
+
+    public static ServerInfo getBuildServer(){
+        return ProxyServer.getInstance().getServerInfo(ProxyServer.getInstance().getConfiguration().getPriorities().get(1));
+    }
 }

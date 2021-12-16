@@ -1,6 +1,7 @@
 package de.xxarox.wdtools.command;
 
 import de.xxarox.wdtools.manager.LobbyManager;
+import dev.waterdog.waterdogpe.ProxyServer;
 import dev.waterdog.waterdogpe.command.Command;
 import dev.waterdog.waterdogpe.command.CommandSender;
 import dev.waterdog.waterdogpe.command.CommandSettings;
@@ -19,6 +20,11 @@ public class LobbyCommand extends Command {
     @Override
     public boolean onExecute(CommandSender commandSender, String s, String[] strings) {
         if (!(commandSender instanceof ProxiedPlayer)) {
+            if (strings.length == 1) {
+                ProxiedPlayer player = ProxyServer.getInstance().getPlayer(strings[0]);
+                player.connect(LobbyManager.getRandomLobby());
+                return true;
+            }
             commandSender.sendMessage("§8§l» §r§cOnly for players.");
             return true;
         }
