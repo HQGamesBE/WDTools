@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) Jan Sohn / xxAROX
+ * All rights reserved.
+ * I don't want anyone to use my source code without permission.
+ */
+
 package de.xxarox.wdtools.network.serverinfo;
 
 import dev.waterdog.waterdogpe.network.serverinfo.BedrockServerInfo;
