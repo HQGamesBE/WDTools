@@ -30,7 +30,7 @@ public class LobbyCommand extends Command {
         }
         ProxiedPlayer player = (ProxiedPlayer) commandSender;
         if (strings.length > 0) {
-            if (strings[0].equals("list")) {
+            if (strings[0].equals("list") || strings[0].equals("ls")) {
                 player.sendMessage(LobbyManager.getLobbyList());
                 return true;
             }

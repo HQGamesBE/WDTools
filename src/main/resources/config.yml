@@ -1,4 +1,7 @@
 prefix: "§dWDTools §8» §r"
 messages:
+  banned: "§cYou are banned from this server."
+  kicked: "§cYou have been kicked from this server."
   vpn-detected: "§4You have a VPN active, please disable it!"
+  lobby_not_found: "§4No Lobby not found, please contact an Administrator!"
   conetion-limit-reached: "§9Too many clients are connected, please try again later!"

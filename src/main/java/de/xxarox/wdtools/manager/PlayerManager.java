@@ -23,12 +23,16 @@ public class PlayerManager {
         });
     }
 
+    public static void setBlockedIps(ArrayList<String> blockedIps) {
+        PlayerManager.blockedIps = blockedIps;
+    }
+
     public static void checkConnectionLimit(ProxiedPlayer proxiedPlayer, @NonNull Boolean quit){
         if (!connections.containsKey(proxiedPlayer.getAddress().getHostName())) {
             connections.put(proxiedPlayer.getAddress().getHostName(), 1);
             return;
         }
-        if (connections.get(proxiedPlayer.getAddress().getHostName()) == 10) {
+        if (connections.get(proxiedPlayer.getAddress().getHostName()) == 4) {
             proxiedPlayer.disconnect(WDTools.getMessage("connection-limit"));
             return;
         }

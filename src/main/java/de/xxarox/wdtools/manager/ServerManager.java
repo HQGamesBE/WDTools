@@ -7,6 +7,34 @@ import dev.waterdog.waterdogpe.player.ProxiedPlayer;
 import java.util.Collection;
 
 public class ServerManager {
+    private static ServerInfo buildServer;
+    private static ServerInfo devServer;
+
+
+    public static void registerBuildServer(ServerInfo serverInfo) {
+        buildServer = serverInfo;
+    }
+
+    public static void registerDevServer(ServerInfo serverInfo) {
+        devServer = serverInfo;
+    }
+
+    public static ServerInfo getBuildServer() {
+        return buildServer;
+    }
+
+    public static ServerInfo getDevServer() {
+        return devServer;
+    }
+
+    public static void unregisterBuildServer() {
+        buildServer = null;
+    }
+
+    public static void unregisterDevServer() {
+        devServer = null;
+    }
+
     public static boolean serverExists(String name) {
         return getServerInfo(name) != null;
     }
@@ -36,13 +64,5 @@ public class ServerManager {
 
     public static Collection<ServerInfo> getServers() {
         return ProxyServer.getInstance().getServers();
-    }
-
-    public static ServerInfo getConnector(){
-        return ProxyServer.getInstance().getServerInfo(ProxyServer.getInstance().getConfiguration().getPriorities().get(0));
-    }
-
-    public static ServerInfo getBuildServer(){
-        return ProxyServer.getInstance().getServerInfo(ProxyServer.getInstance().getConfiguration().getPriorities().get(1));
     }
 }

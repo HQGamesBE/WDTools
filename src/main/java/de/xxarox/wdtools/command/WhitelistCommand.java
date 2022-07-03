@@ -36,7 +36,7 @@ public class WhitelistCommand extends Command {
             return true;
         } else if (
                 strings.length == 1 && strings[0].equalsIgnoreCase("off")
-                && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.enable"))
+                && (commandSender.hasPermission("xxarox.wdtools.whitelist") || commandSender.hasPermission("xxarox.wdtools.whitelist.disable"))
         ) {
             if (WhitelistManager.isEnabled()) {
                 WhitelistManager.setEnabled(false);

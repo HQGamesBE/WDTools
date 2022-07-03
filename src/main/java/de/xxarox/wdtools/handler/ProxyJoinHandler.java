@@ -1,7 +1,7 @@
 package de.xxarox.wdtools.handler;
 
+import de.xxarox.wdtools.WDTools;
 import de.xxarox.wdtools.manager.LobbyManager;
-import de.xxarox.wdtools.manager.ServerManager;
 import de.xxarox.wdtools.manager.WhitelistManager;
 import dev.waterdog.waterdogpe.network.serverinfo.ServerInfo;
 import dev.waterdog.waterdogpe.player.ProxiedPlayer;
@@ -16,7 +16,8 @@ public class ProxyJoinHandler implements IJoinHandler {
         }
         ServerInfo lobby = LobbyManager.getRandomLobby();
         if (lobby == null) {
-            lobby = ServerManager.getConnector();
+            proxiedPlayer.disconnect(WDTools.getMessage("lobby_not_found"));
+            return null;
         }
         return lobby;
     }

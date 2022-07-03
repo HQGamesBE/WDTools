@@ -3,6 +3,7 @@ package de.xxarox.wdtools;
 import de.xxarox.wdtools.command.*;
 import de.xxarox.wdtools.handler.ProxyJoinHandler;
 import de.xxarox.wdtools.handler.ReconnectLobbyHandler;
+import de.xxarox.wdtools.manager.LobbyManager;
 import dev.waterdog.waterdogpe.event.defaults.PlayerDisconnectEvent;
 import dev.waterdog.waterdogpe.event.defaults.PlayerLoginEvent;
 import dev.waterdog.waterdogpe.event.defaults.PreTransferEvent;
@@ -33,6 +34,7 @@ public class WDTools extends Plugin {
         this.getProxy().getEventManager().subscribe(PlayerDisconnectEvent.class, Listener::PlayerDisconnectEvent);
 
         // Commands
+        getProxy().getCommandMap().registerCommand(new LobbyManagerCommand());
         getProxy().getCommandMap().registerCommand(new ServerManagerCommand());
         getProxy().getCommandMap().registerCommand(new SendMessageCommand("sendmessage"));
         getProxy().getCommandMap().registerCommand(new TransferPlayerCommand("transfer"));
@@ -42,6 +44,34 @@ public class WDTools extends Plugin {
         getProxy().getCommandMap().registerCommand(new KickCommand("wdkick"));
 
         getLogger().info("WDTools enabled");
+    }
+
+    @Override
+    public void loadConfig() {
+        super.loadConfig();
+        String priority = getConfig().getString("lobby_manager.priority", "low");
+        switch (priority.toLowerCase()) {
+            case "low": {
+                LobbyManager.setPriority(LobbyManager.Priority.LOW_PLAYER_COUNT);
+                break;
+            }
+            case "high": {
+                LobbyManager.setPriority(LobbyManager.Priority.HIGH_PLAYER_COUNT);
+                break;
+            }
+            case "random": {
+                LobbyManager.setPriority(LobbyManager.Priority.RANDOM);
+                break;
+            }
+            case "random_low": {
+                LobbyManager.setPriority(LobbyManager.Priority.LOW_PLAYER_COUNT_RANDOM);
+                break;
+            }
+            default: {
+                getLogger().warning("Unknown lobby priority: " + priority + " - using default: RANDOM");
+                LobbyManager.setPriority(LobbyManager.Priority.RANDOM, true);
+            }
+        }
     }
 
     public static String getMessage(String key){
